@@ -32,12 +32,24 @@ def get_distance(wordx, wordy):
     
     for i in range(1, len(wordx) + 1):
         for j in range(1, len(wordy) + 1):
+            # dp[i][j] = min(
+            #     dp[i-1][j] + 1 + int(wordx[i-1] in boin),
+            #     dp[i][j-1] + 1 + int(wordy[j-1] in boin),
+            #     dp[i-1][j-1] + int(wordx[i-1] != wordy[j-1])) + int(wordx[i-1] in boin or wordy[j-1] in boin)
             dp[i][j] = min(
-                dp[i-1][j] + 1 + int(wordx[i-1] in boin),
-                dp[i][j-1] + 1 + int(wordy[j-1] in boin),
-                dp[i-1][j-1] + int(wordx[i-1] != wordy[j-1])) + int(wordx[i-1] in boin or wordy[j-1] in boin)
+                dp[i-1][j] + 1,
+                dp[i][j-1] + 1,
+                dp[i-1][j-1] + int(wordx[i-1] != wordy[j-1]))
 
     return dp[len(wordx)][len(wordy)]
+
+def just_boin(word):
+    ret = ""
+    for a in word:
+        if a in boin:
+            ret += a
+    return ret
+
 
 
 def get_similar_word(word):
@@ -51,7 +63,10 @@ def get_similar_word(word):
             continue
         if word == cur_word:
             continue
-        score = get_distance(word,cur_word)
+        score = get_distance(word,cur_word) + get_distance(word, just_boin(cur_word))
+
+
+
         #print("%s %s" % (score, cur_word))
         if score < bestscore:
             bestscore = score

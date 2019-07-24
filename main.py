@@ -4,6 +4,8 @@ import simword
 # print(simword.get_similar_word(dai))
 while True:
     C = wordnet.get_rondom_words(1)[0]
+    if re.search('[A-z,Ａ-Ｚ,ａ-ｚ]',C) != None:
+        continue
     A = wordnet.get_hype_word(C)
     B = simword.get_similar_word(C)
     if len(A) == 0:
