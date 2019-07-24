@@ -1,2 +1,4 @@
 katakana-dict/
 wnjpn.db
+.vscode/
+__pycache__/
