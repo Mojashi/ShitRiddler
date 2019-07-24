@@ -1,0 +1,23 @@
+単語を抽象化するやつ
+goo国語辞書
+
+１０個あつまると　怪しいばけものになるのって　なぁに？
+→貝
+
+A + B = C
+A=貝
+B=十
+
+prob AなBってなんだ
+ans C
+
+prob Bになるとabst(C)なものってなんだ
+ans A
+
+
+pron(C) ~= B
+A = hypo(C)
+
+prob AなBってなんだ
+ans C
+
