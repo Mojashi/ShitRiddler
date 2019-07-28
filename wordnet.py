@@ -39,7 +39,7 @@ def get_hype_word(word):
 
     path = get_longest_path(wordid)
 
-    synset = path[int(len(path) / 2)]
+    synset = path[int(len(path) / 3)]
 
 
     cand = []
@@ -56,8 +56,8 @@ def get_hype_word(word):
     else:
         return ""
 
-def get_rondom_words(num):
-    words = list(conn.execute("select lemma from word where (pos='n' and lang='jpn') order by random() limit "+str(num)))
+def get_rondom_words(num, lemma_len = (0,99999)):
+    words = list(conn.execute("select lemma from word where (pos='n' and lang='jpn' and lemma_len > ? and lemma_len < ?) order by random() limit ?", (lemma_len[0], lemma_len[1], str(num))))
     ret = []
     for word in words:
         ret.append(word[0])

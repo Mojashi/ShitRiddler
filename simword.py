@@ -54,7 +54,7 @@ def just_boin(word):
 
 def get_similar_word(word):
 
-    words = wordnet.get_rondom_words(4000)
+    words = wordnet.get_rondom_words(7000)
     bestscore = 999999
     bestword = ''
 
