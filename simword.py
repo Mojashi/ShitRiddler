@@ -53,8 +53,8 @@ def just_boin(word):
 
 
 def get_similar_word(word):
-
-    words = wordnet.get_rondom_words(7000)
+    jb =just_boin(converter.do(word))
+    words = wordnet.get_rondom_words(3000, lemma_len=[len(jb) - 2, len(jb) + 2])
     bestscore = 999999
     bestword = ''
 
